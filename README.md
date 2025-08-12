@@ -16,5 +16,5 @@ This project contains the complete source code for my personal/static website, i
 - 🖼️ Clean visuals with organized media
 
 ## 🚀 Live Preview
-> *(Optional)* Add your GitHub Pages link here once you publish it:
+
 Website: Mrinalroy.netlify.app
