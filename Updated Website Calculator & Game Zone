@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mrinal Roy - Junior Web Developer</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ========= MAIN SITE STYLES (unchanged) ========= */
+    /* Reset and base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #243949, #517fa4);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      background-color: #1b1b2f;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 36px;
+      color: #f9dc5c;
+    }
+
+    #note-animation {
+      font-size: 18px;
+      margin-top: 10px;
+      animation: slideText 2s infinite alternate ease-in-out;
+      color: #fefefe;
+    }
+
+    @keyframes slideText {
+      from {
+        transform: translateY(0);
+        color: #fff;
+      }
+
+      to {
+        transform: translateY(-10px);
+        color: #f4a261;
+      }
+    }
+
+    /* subtle Game Zone link in header (minimal, non-intrusive) */
+    .header-actions {
+      margin-top: 14px;
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      align-items:center;
+    }
+    .game-link {
+      background: transparent;
+      color: #f4a261;
+      border: 1px solid rgba(244,162,97,0.12);
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight:700;
+      font-size:0.95rem;
+    }
+    .game-link:hover { opacity:0.95; transform: translateY(-1px); transition: .15s; }
+
+    /* Profile Section */
+    .profile {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      background-color: #fff;
+    }
+
+    .profile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .bio h2 {
+      font-size: 26px;
+      color: #f4a261;
+    }
+
+    .bio p {
+      color: #e0e0e0;
+    }
+
+    /* About, Memories, Inspiration Sections */
+    .about,
+    .memories,
+    .inspiration {
+      text-align: center;
+      padding: 50px 20px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .about h3,
+    .memories h3,
+    .inspiration h3 {
+      font-size: 24px;
+      color: #f9dc5c;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      max-width: 700px;
+      margin: auto;
+      color: #ddd;
+    }
+
+    /* Memories Gallery */
+    .memory-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .memory-gallery img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border: 5px solid #f4a261;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Inspiration Cards */
+    .inspo-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: #2e2e4d;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* Video Section */
+    .haters-video {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(255, 255, 255, 0.07);
+      margin: 40px 0;
+      border-radius: 12px;
+    }
+
+    .haters-video h3 {
+      font-size: 26px;
+      color: #f9dc5c;
+      margin-bottom: 20px;
+    }
+
+    .haters-video video {
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      max-width: 700px;
+      width: 100%;
+      outline: none;
+      cursor: pointer;
+      background-color: #000;
+    }
+
+    /* Contact Section (kept same style but placed lower) */
+    .contact {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #0f3460;
+    }
+
+    .contact h3 {
+      color: #f4a261;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      font-size: 1.1rem;
+      margin: 8px 0;
+    }
+
+    .contact a {
+      color: #f4a261;
+      text-decoration: none;
+    }
+
+    .social a {
+      margin: 0 15px;
+      font-size: 28px;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    .social a:hover {
+      color: #f4a261;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1b1b2f;
+      color: #bbb;
+      font-size: 14px;
+      margin-top: 30px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .memory-gallery {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .inspo-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* Calculator Specific Styles */
+    .calculator {
+      background: #1e1e1e;
+      border-radius: 12px;
+      padding: 20px;
+      width: 360px;
+      box-shadow: 0 0 20px #00ffff80;
+      margin: 0 auto;
+    }
+
+    .display {
+      background: black;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    #expression,
+    #result {
+      text-align: right;
+      word-wrap: break-word;
+    }
+
+    #expression {
+      font-size: 20px;
+      color: #00e1ff;
+    }
+
+    #result {
+      font-size: 26px;
+      color: #00ff90;
+      margin-top: 4px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 16px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background: #333;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #00ffff;
+      color: black;
+    }
+
+    /* Keep small visitor-count style */
+    #visitor-count,
+    #visitCount {
+      font-weight: 700;
+      color: #fefefe;
+    }
+
+    /* ========= GAME ZONE STYLES (scoped under #game-zone so main design isn't changed) ========= */
+
+    /* Scoped variables & base for the game area */
+    #game-zone {
+      padding: 36px 18px;
+      margin: 24px auto;
+      max-width: 1100px;
+    }
+
+    /* Now include the neon cube + tic-tac-toe styles scoped under #game-zone to avoid overriding body */
+    #game-zone :root { }
+
+    #game-zone .stage {
+      display: grid;
+      place-items: center;
+      perspective: 1200px;
+      perspective-origin: 50% 50%;
+      touch-action: none;
+      margin-bottom: 18px;
+    }
+
+    /* reusing many of the styles from your provided game CSS, but scoped to #game-zone */
+    #game-zone .scene {
+      width: 260px;
+      height: 260px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform .12s ease-out;
+      margin: 0 auto 8px;
+    }
+    #game-zone .cube { width:100%; height:100%; position:absolute; transform-style:preserve-3d; }
+    #game-zone .face {
+      position:absolute;
+      inset:0;
+      background: linear-gradient(135deg, #00e5ff 0%, #7cff00 50%, #ff00e0 100%);
+      opacity: 0.25;
+      border-radius:10px;
+      box-shadow: inset 0 0 60px #00d8ff33, inset 0 0 120px #ff00e033;
+      animation: hue 16s linear infinite;
+    }
+    @keyframes hue{ to { filter:hue-rotate(360deg); } }
+    #game-zone .face::before, #game-zone .face::after{
+      content:"";
+      position:absolute;
+      inset: -3px;
+      background: conic-gradient(from 0deg at 50% 50%, #00e5ff, #5cfcc2, #7cff00, #ffe600, #ff7b00, #ff00e0, #00b7ff);
+      border-radius:12px;
+      animation:hue 16s linear infinite;
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      pointer-events:none;
+    }
+    #game-zone .face::before{ padding:3px; box-shadow: 0 0 28px #00e5ff50, 0 0 44px #ff00e040; }
+    #game-zone .face::after{ filter:blur(18px); opacity:.95; padding:5px; }
+
+    #game-zone .face--front  { transform: translateZ(calc(260px/2)); }
+    #game-zone .face--back   { transform: rotateY(180deg) translateZ(calc(260px/2)); }
+    #game-zone .face--right  { transform: rotateY(90deg)  translateZ(calc(260px/2)); }
+    #game-zone .face--left   { transform: rotateY(-90deg) translateZ(calc(260px/2)); }
+    #game-zone .face--top    { transform: rotateX(90deg)  translateZ(calc(260px/2)); }
+    #game-zone .face--bottom { transform: rotateX(-90deg) translateZ(calc(260px/2)); }
+
+    /* Tic Tac Toe scoped styles */
+    #game-zone .game-wrap {
+      width: 100%;
+      margin: 6px auto 12px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      padding:14px;
+      border-radius:14px;
+      background: linear-gradient(180deg, #0b0f1f77, #0b0f1f33);
+      box-shadow: 0 20px 60px #0007;
+      backdrop-filter: blur(6px);
+    }
+    #game-zone .game-header{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    #game-zone .game-title{ display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; font-size:18px; }
+    #game-zone .panel{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    #game-zone .players { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    #game-zone .player-card{ display:flex; gap:8px; align-items:center; background: linear-gradient(180deg, #071029, #06101f); padding:8px 10px; border-radius:10px; box-shadow: inset 0 0 0 1px #243064; }
+    #game-zone .player-logo{ width:28px;height:28px; display:grid;place-items:center; border-radius:6px; font-weight:900; }
+    #game-zone .logo-X{ background: linear-gradient(135deg,#00e5ff,#38d9ff); color:#001; box-shadow: 0 6px 18px #00e5ff40; }
+    #game-zone .logo-O{ background: linear-gradient(135deg,#ff00e0,#ff63d3); color:#001; box-shadow: 0 6px 18px #ff00e040; }
+    #game-zone .logo-B{ background: linear-gradient(135deg,#fff,#ddd); color:#001; box-shadow: 0 6px 18px #ffffff40; }
+    #game-zone .player-name{ font-weight:700; font-size:0.95rem; color:#e8f4ff; }
+    #game-zone .small{ font-size:0.82rem; opacity:0.8; }
+    #game-zone .controls input[type="text"]{ background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.04); color: #fff; padding:8px 10px; border-radius:8px; min-width:160px; }
+    #game-zone .badge{ padding:8px 12px; border-radius:999px; background:#121a31; box-shadow: inset 0 0 0 1px #22305a; font-weight:700; letter-spacing:.03em; }
+    #game-zone .btn{ appearance:none; border:none; padding:9px 12px; border-radius:10px; background: linear-gradient(135deg, #19305e, #0f1c3b); color:#e8efff; font-weight:700; cursor:pointer; box-shadow: 0 8px 24px #0008; transition: transform .08s ease; }
+    #game-zone .board{ aspect-ratio:1/1; width:min(520px, 92vw); margin: 6px auto; display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; padding:10px; background: linear-gradient(180deg, #0e1530, #0b1129); border-radius:18px; box-shadow: inset 0 0 0 1px #243064, 0 20px 50px #0007; }
+    #game-zone .cell{ position:relative; display:grid; place-items:center; height:100%; border-radius:14px; background: radial-gradient(160px 160px at 50% 60%, #0f1a3a, #0a0f22 70%); box-shadow: inset 0 0 0 1px #1c274f, 0 8px 18px #0009; cursor:pointer; user-select:none; transition: transform .05s ease, box-shadow .2s ease, background .2s ease; }
+    #game-zone .cell:hover{ box-shadow: inset 0 0 0 1px #2a3a73, 0 10px 24px #000a; }
+    #game-zone .mark{ font-weight: 900; font-size: clamp(40px, 10vw, 88px); letter-spacing:.02em; line-height:1; text-shadow: 0 0 18px #00e5ff44, 0 0 36px #ff00e044; }
+    #game-zone .mark.X{ color: #00e5ff; filter: drop-shadow(0 0 16px #00e5ff70); }
+    #game-zone .mark.O{ color: #ff00e0; filter: drop-shadow(0 0 16px #ff00e070); }
+    #game-zone .cell.win{ outline: 3px solid #7cff00; box-shadow: 0 0 22px #7cff0070, inset 0 0 0 2px #274c1f; background: radial-gradient(200px 200px at 50% 60%, #163418, #0a1711 65%); }
+    #game-zone .status { display:flex; gap:10px; align-items:center; justify-content:center; margin-top:6px; font-weight:700; }
+    #game-zone .visit { margin-top:6px; text-align:center; opacity:.85; }
+
+    /* small responsiveness for the game zone */
+    @media (max-width:600px){
+      #game-zone .scene { width:200px; height:200px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Mrinal Roy</h1>
+    <p id="note-animation">বাংলা • हिंदी • English • اُردُو • தமிழ் • ગુજરાતી • ਪੰਜਾਬੀ</p>
+
+    <div class="header-actions">
+      <!-- Minimal link to Game Zone that scrolls to the game -->
+      <a href="#game-zone" class="game-link" title="Go to Game Zone">Game Zone 🎮</a>
+    </div>
+  </header>
+
+  <section class="profile">
+    <div class="profile-img">
+      <img src="image.jpg" alt="Mrinal Roy" />
+    </div>
+    <div class="bio">
+      <h2>Junior Web Developer</h2>
+      <p>Pursuing B.Tech from University of Calcutta</p>
+      <p>Learning Data Science from IIT Madras</p>
+    </div>
+  </section>
+
+  <section class="about">
+    <h3>About Me</h3>
+    <p>
+      Hello! I'm Mrinal Roy, a passionate junior web developer with a strong foundation in front-end development (HTML, CSS, JavaScript)
+      and expanding knowledge in Python, C, and C++. I'm committed to learning and helping others on their coding journey. Need any help? Just
+      reach out!
+    </p>
+  </section>
+
+  <section class="memories">
+    <h3>Mrinal Memories</h3>
+    <div class="memory-gallery">
+      <img src="image3.jpg" alt="Memory 1" />
+      <img src="image4.jpg" alt="Memory 2" />
+      <img src="image5.jpg" alt="Memory 3" />
+      <img src="image6.jpg" alt="Memory 4" />
+    </div>
+  </section>
+
+  <section class="inspiration">
+    <h3>Inspired By Legends</h3>
+    <div class="inspo-cards">
+      <div class="card">
+        <img src="image1.jpg" alt="APJ Abdul Kalam" />
+        <p><strong>Dr. A.P.J. Abdul Kalam</strong></p>
+        <p>"Dream, Dream, Dream. Dreams transform into thoughts and thoughts result in action."</p>
+      </div>
+      <div class="card">
+        <img src="image2.jpg" alt="Shivaji Maharaj" />
+        <p><strong>Shivaji Maharaj</strong></p>
+        <p>"Freedom is a birthright and we must always strive to keep it alive."</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="haters-video">
+    <h3>Message for Haters</h3>
+    <video controls poster="https://via.placeholder.com/700x400?text=Your+Video+Poster">
+      <source src="video1.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <!-- Calculator Section -->
+  <section class="calculator-section" style="padding: 40px 20px; text-align:center; background: rgba(255, 255, 255, 0.07); border-radius: 12px; margin-bottom: 40px;">
+    <h2>Test Your Brains Function</h2>
+    <div class="calculator">
+      <div class="display">
+        <div id="expression">0</div>
+        <div id="result">= 0</div>
+      </div>
+      <div class="buttons">
+        <button onclick="clearAll()">AC</button>
+        <button onclick="backspace()">⌫</button>
+        <button onclick="append('(')">(</button>
+        <button onclick="append(')')">)</button>
+
+        <button onclick="append('7')">7</button>
+        <button onclick="append('8')">8</button>
+        <button onclick="append('9')">9</button>
+        <button onclick="append('/')">÷</button>
+
+        <button onclick="append('4')">4</button>
+        <button onclick="append('5')">5</button>
+        <button onclick="append('6')">6</button>
+        <button onclick="append('*')">×</button>
+
+        <button onclick="append('1')">1</button>
+        <button onclick="append('2')">2</button>
+        <button onclick="append('3')">3</button>
+        <button onclick="append('-')">−</button>
+
+        <button onclick="append('0')">0</button>
+        <button onclick="append('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="append('+')">+</button>
+
+        <button onclick="append('Math.PI')">π</button>
+        <button onclick="append('Math.E')">e</button>
+        <button onclick="append('**')">^</button>
+        <button onclick="append('Math.sqrt(')">√</button>
+
+        <button onclick="append('Math.sin(toRadians(')">sin</button>
+        <button onclick="append('Math.cos(toRadians(')">cos</button>
+        <button onclick="append('Math.tan(toRadians(')">tan</button>
+        <button onclick="append('Math.log10(')">log</button>
+
+        <button onclick="append('Math.log(')">ln</button>
+        <button disabled style="opacity: 0.3;">&nbsp;</button>
+        <button disabled style="opacity: 0.3;">&nbsp;</button>
+        <button disabled style="opacity: 0.3;">&nbsp;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GAME ZONE (scoped, integrated) ================= -->
+  <section id="game-zone" aria-label="Game Zone">
+    <h2 style="text-align:center; color:#f9dc5c; margin-bottom:6px;">🎮 Game Zone</h2>
+    <p style="text-align:center; color:#eee; margin-bottom:18px;">All The Best From Team MRINALxVIRUS!</p>
+
+    <!-- Neon cube and tic-tac-toe game (scoped CSS above) -->
+    <div class="stage" id="stage">
+      <div class="scene" id="scene">
+        <div class="cube" id="cube">
+          <div class="face face--front"></div>
+          <div class="face face--back"></div>
+          <div class="face face--right"></div>
+          <div class="face face--left"></div>
+          <div class="face face--top"></div>
+          <div class="face face--bottom"></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="game-wrap" id="game">
+      <div class="game-header">
+        <div class="game-title">
+          <span style="opacity:.85;">Tic Tac Toe</span>
+        </div>
+
+        <div class="panel">
+          <div class="players">
+            <div class="player-card" id="p1Card">
+              <div class="player-logo logo-X" id="p1Logo">○</div>
+              <div>
+                <div class="player-name" id="p1NameDisplay">Player 1</div>
+                <div class="small">(X)</div>
+              </div>
+            </div>
+
+            <div class="player-card" id="p2Card">
+              <div class="player-logo logo-O" id="p2Logo">△</div>
+              <div>
+                <div class="player-name" id="p2NameDisplay">Player 2</div>
+                <div class="small">(O)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="controls">
+            <input type="text" id="p1Input" placeholder="Player 1 name (X)">
+            <input type="text" id="p2Input" placeholder="Player 2 name (O) or Bot">
+            <label><input type="radio" name="first" value="p1" checked> First: X</label>
+            <label><input type="radio" name="first" value="p2"> First: O</label>
+
+            <button class="btn" id="startBtn">Start</button>
+            <button class="btn" id="vsBotBtn">Play vs Bot</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="justify-content:center;">
+        <span class="badge" id="turnBadge">Turn: —</span>
+        <span class="badge" id="scoreBadge">Score — X: <b id="sx">0</b> | O: <b id="so">0</b></span>
+        <button class="btn" id="newRoundBtn">New Round</button>
+        <button class="btn" id="resetAllBtn" title="Reset board & score">Reset All</button>
+      </div>
+
+      <div class="board" id="board" role="grid" aria-label="Tic Tac Toe Board"></div>
+      <div class="status" id="statusBar"></div>
+      <div class="visit" id="visitCount"></div>
+    </section>
+
+    <footer style="text-align:center; color:#ddd; margin-top:12px;">Developed by MRINALxVIRUS TEAM</footer>
+  </section>
+
+  <!-- ================= CONTACT (kept at bottom, as requested) ================= -->
+  <section class="contact" id="contact-section">
+    <h3>Contact Me</h3>
+    <p>Email: <a href="mailto:mrinalroymanab@gmail.com">mrinalroymanab@gmail.com</a></p>
+    <p>Address: Bashundhara Housing Complex, Saltlake Sector4, Kolkata, India</p>
+    <div class="social">
+      <a href="https://instagram.com/Mrinalr0y" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      <a href="https://linkedin.com/in/Mrinalr0y" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Mrinal Roy. All rights reserved. <span id="visitor-count" style="margin-left:12px;"></span></p>
+  </footer>
+
+  <!-- ================ SCRIPTS ================ -->
+  <script>
+    // Phrase rotation code (for the note animation) - unchanged
+    const phrases = [
+      "বাংলা",
+      "हिंदी",
+      "English",
+      "தமிழ்",
+      "ગુજરાતી",
+      "ਪੰਜਾਬੀ",
+    ];
+
+    const noteText = document.getElementById("note-animation");
+    let index = 0;
+
+    setInterval(() => {
+      noteText.textContent = phrases[index] + " • ";
+      index = (index + 1) % phrases.length;
+    }, 1500);
+
+    // Calculator functionality - unchanged
+    let expr = "";
+
+    const expressionEl = document.getElementById("expression");
+    const resultEl = document.getElementById("result");
+
+    function update() {
+      expressionEl.innerText = expr || "0";
+    }
+
+    function append(val) {
+      expr += val;
+      update();
+    }
+
+    function backspace() {
+      expr = expr.slice(0, -1);
+      update();
+    }
+
+    function clearAll() {
+      expr = "";
+      resultEl.innerText = "= 0";
+      update();
+    }
+
+    function toRadians(deg) {
+      return deg * Math.PI / 180;
+    }
+
+    function calculate() {
+      try {
+        // Replace toRadians(...) with equivalent radians value
+        const transformed = expr.replace(/toRadians\((.*?)\)/g, (_, inside) => {
+          return `(${inside} * Math.PI / 180)`;
+        });
+
+        // Evaluate expression safely using Function constructor
+        const result = Function('"use strict"; return (' + transformed + ')')();
+
+        resultEl.innerText = "= " + result;
+        expr = result.toString(); // Allow chaining further calculations
+        update();
+      } catch (err) {
+        resultEl.innerText = "= Error";
+      }
+    }
+  </script>
+
+  <script>
+    /* ================ GAME ZONE SCRIPTS ================ */
+    // CUBE CONTROLS (scoped to #game-zone elements)
+    const stage = document.getElementById('stage');
+    const scene = document.getElementById('scene');
+
+    // Zoom limits (changed to avoid excessive zoom)
+    const MIN_SCALE = 0.8;   // don't make cube too small
+    const MAX_SCALE = 1.6;   // reduced from 2.5 to 1.6 so it never zooms too large
+
+    let rotX = -18, rotY = 24, scale = 1;
+    let isDragging = false, lastX = 0, lastY = 0, vX = 0, vY = 0, rafId = null;
+
+    function applyCube() {
+      // ensure scale stays within bounds (safety clamp)
+      scale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, scale));
+      scene.style.transform = `scale(${scale}) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    }
+    function animateInertia() {
+      vX *= 0.94; vY *= 0.94;
+      rotX += vY; rotY += vX;
+      applyCube();
+      if (Math.abs(vX) > 0.04 || Math.abs(vY) > 0.04) {
+        rafId = requestAnimationFrame(animateInertia);
+      } else { rafId = null; }
+    }
+    function getPoint(e) {
+      if (e.touches && e.touches[0]) return { x: e.touches[0].clientX, y: e.touches[0].clientY, clientX: e.touches[0].clientX, clientY: e.touches[0].clientY };
+      return { x: e.clientX, y: e.clientY, clientX: e.clientX, clientY: e.clientY };
+    }
+    function onDown(e) {
+      // only start dragging for single-pointer interactions (so pinch won't trigger drag)
+      if (e.touches && e.touches.length > 1) return;
+      isDragging = true;
+      const p = getPoint(e);
+      lastX = p.x; lastY = p.y;
+      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    }
+    function onMove(e) {
+      // ignore movement if pinching (multiple touches) or not dragging
+      if (e.touches && e.touches.length > 1) return;
+      if (!isDragging) return;
+      const p = getPoint(e);
+      const dx = p.x - lastX, dy = p.y - lastY;
+      lastX = p.x; lastY = p.y;
+      rotY += dx * 0.3;
+      rotX -= dy * 0.3;
+      vX = dx * 0.18;
+      vY = -dy * 0.18;
+      applyCube();
+    }
+    function onUp() {
+      if (!isDragging) return;
+      isDragging = false;
+      if (!rafId) rafId = requestAnimationFrame(animateInertia);
+    }
+
+    let pinchStartDist = 0, pinchStartScale = 1;
+    function dist(a, b) { const dx = a.clientX - b.clientX, dy = a.clientY - b.clientY; return Math.hypot(dx, dy); }
+
+    stage.addEventListener('touchstart', (e) => {
+      // if two fingers, start pinch zoom state
+      if (e.touches.length === 2) {
+        pinchStartDist = dist(e.touches[0], e.touches[1]) || 1; // avoid zero
+        pinchStartScale = scale;
+      } else if (e.touches.length === 1) {
+        onDown(e);
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      // if pinching with two touches -> process zoom only
+      if (e.touches && e.touches.length === 2) {
+        const d = dist(e.touches[0], e.touches[1]) || pinchStartDist || 1;
+        const factor = d / pinchStartDist;
+        // compute target scale and clamp to MIN/MAX
+        const target = Math.max(MIN_SCALE, Math.min(MAX_SCALE, pinchStartScale * factor));
+        // apply smoothing so zoom doesn't jump wildly and doesn't disturb touch drag
+        // small interpolation for smooth feel
+        scale += (target - scale) * 0.35;
+        applyCube();
+      } else {
+        // single touch -> treat as rotation drag
+        onMove(e);
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+      // when fingers release, if no touches remain, end dragging
+      if (!e.touches || e.touches.length === 0) {
+        onUp();
+        pinchStartDist = 0;
+      }
+    });
+
+    // Use pointer events for desktop drag too
+    stage.addEventListener('pointerdown', onDown);
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+
+    // Wheel zoom: keep it scoped to stage (so page scrolling unaffected), and limit scale
+    stage.addEventListener('wheel', (e) => {
+      // prevent page scroll when wheel is used over the cube
+      e.preventDefault();
+      // smaller incremental zoom steps and clamped
+      const factor = e.deltaY > 0 ? 0.95 : 1.05;
+      // apply small incremental change and clamp
+      const newScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, scale * factor));
+      // smooth the change slightly
+      scale += (newScale - scale) * 0.6;
+      applyCube();
+    }, { passive: false });
+
+    applyCube();
+
+    /* ===================== TIC TAC TOE LOGIC (scoped) ===================== */
+    const boardEl = document.getElementById('board');
+    const turnBadge = document.getElementById('turnBadge');
+    const sxEl = document.getElementById('sx');
+    const soEl = document.getElementById('so');
+    const newRoundBtn = document.getElementById('newRoundBtn');
+    const resetAllBtn = document.getElementById('resetAllBtn');
+    const startBtn = document.getElementById('startBtn');
+    const vsBotBtn = document.getElementById('vsBotBtn');
+    const statusBar = document.getElementById('statusBar');
+
+    let board = Array(9).fill(null);
+    let current = 'X';
+    let lock = false;
+    let scoreX = 0, scoreO = 0;
+    let players = { X: 'Player 1', O: 'Player 2' };
+    let vsBot = false;
+
+    // winning lines
+    const wins = [
+      [0,1,2],[3,4,5],[6,7,8],
+      [0,3,6],[1,4,7],[2,5,8],
+      [0,4,8],[2,4,6]
+    ];
+
+    function buildBoard(){
+      boardEl.innerHTML = '';
+      for(let i=0;i<9;i++){
+        const c = document.createElement('button');
+        c.className = 'cell';
+        c.dataset.idx = i;
+        c.setAttribute('role','gridcell');
+        c.addEventListener('click', onCellClick);
+        boardEl.appendChild(c);
+      }
+    }
+
+    function onCellClick(e){
+      if(lock) return;
+      const idx = Number(e.currentTarget.dataset.idx);
+      if(board[idx]) return;
+
+      placeMark(idx, current);
+      const winLine = checkWin();
+      if(winLine){
+        endRound(winLine);
+        return;
+      }
+      if(board.every(Boolean)){
+        drawRound();
+        return;
+      }
+      switchTurn();
+      // if now bot's turn, make bot move
+      if(vsBot && current==='O'){
+        setTimeout(botMove, 420);
+      }
+    }
+
+    function placeMark(i, mark){
+      board[i]=mark;
+      paintCell(i, mark);
+    }
+
+    function paintCell(i, mark){
+      const cell = boardEl.children[i];
+      const span = document.createElement('span');
+      span.className = `mark ${mark==='X'?'X':(mark==='O'?'O':'B')}`;
+      // show logos instead of letters for theme:
+      span.textContent = mark==='X' ? '○' : (mark==='O' ? '△' : '□');
+      cell.appendChild(span);
+    }
+
+    function checkWin(){
+      for(const line of wins){
+        const [a,b,c] = line;
+        if(board[a] && board[a]===board[b] && board[a]===board[c]) return line;
+      }
+      return null;
+    }
+
+    function highlightWin(line){
+      line.forEach(i => boardEl.children[i].classList.add('win'));
+    }
+
+    function endRound(winLine){
+      lock = true;
+      highlightWin(winLine);
+      const winnerMark = board[winLine[0]];
+      if(winnerMark==='X'){ scoreX++; sxEl.textContent = String(scoreX); }
+      else { scoreO++; soEl.textContent = String(scoreO); }
+      turnBadge.textContent = `Winner: ${players[winnerMark]} (${winnerMark==='X'?'○':'△'})`;
+      statusBar.textContent = `${players[winnerMark]} wins!`;
+    }
+
+    function drawRound(){
+      lock = true;
+      turnBadge.textContent = 'Draw!';
+      statusBar.textContent = `It's a draw!`;
+    }
+
+    function switchTurn(){
+      current = current === 'X' ? 'O' : 'X';
+      updateTurnBadge();
+    }
+
+    function updateTurnBadge(){
+      turnBadge.textContent = `Turn: ${players[current]} (${current==='X'?'○':'△'})`;
+      statusBar.textContent = `${players[current]}'s turn — place your mark`;
+    }
+
+    // New round / reset
+    function newRound(){
+      board = Array(9).fill(null);
+      lock = false;
+      buildBoard();
+      // current stays same as previous starter, keep X as default starter for newRound
+      updateTurnBadge();
+      statusBar.textContent = `New round — ${players[current]} starts`;
+    }
+
+    function resetAll(){
+      scoreX=0; scoreO=0;
+      sxEl.textContent='0'; soEl.textContent='0';
+      // keep players same, reset board
+      current='X';
+      newRound();
+      statusBar.textContent = `Scores reset — ${players[current]} starts`;
+    }
+
+    // Start game with inputs
+    function startGame(manualVsBot=false){
+      const p1 = document.getElementById('p1Input').value.trim();
+      const p2 = document.getElementById('p2Input').value.trim();
+      players.X = p1 || 'Player 1';
+      players.O = p2 || (manualVsBot ? 'Bot' : 'Player 2');
+
+      // update name displays & logos
+      document.getElementById('p1NameDisplay').textContent = players.X;
+      document.getElementById('p2NameDisplay').textContent = players.O;
+      // if p2 is bot, mark logo style
+      const p2Logo = document.getElementById('p2Logo');
+      if(players.O.toLowerCase().includes('bot')){
+        p2Logo.classList.remove('logo-O');
+        p2Logo.classList.add('logo-B');
+        p2Logo.textContent = '□';
+      } else {
+        p2Logo.classList.remove('logo-B');
+        p2Logo.classList.add('logo-O');
+        p2Logo.textContent = '△';
+      }
+
+      // who starts? check radio
+      const first = document.querySelector('input[name="first"]:checked').value;
+      current = (first==='p1' ? 'X' : 'O');
+
+      vsBot = manualVsBot || false;
+      // if vsBot manually enabled by button, set p2 field
+      if(vsBot) {
+        document.getElementById('p2Input').value = players.O;
+      }
+
+      buildBoard();
+      lock = false;
+      updateTurnBadge();
+      statusBar.textContent = `${players[current]} goes first`;
+      // if bot starts
+      if(vsBot && current==='O'){
+        setTimeout(botMove, 600);
+      }
+    }
+
+    function botMove(){
+      if(lock) return;
+      // simple bot: win if possible, block if needed, else random center/corner/side preference
+      const empty = board.map((v,i)=>v==null?i:-1).filter(i=>i>=0);
+      if(!empty.length) return;
+
+      // try to win
+      for(const i of empty){
+        const copy = board.slice(); copy[i]='O';
+        if(checkPotentialWin(copy,'O')) { makeBotPlace(i); return; }
+      }
+      // block X
+      for(const i of empty){
+        const copy = board.slice(); copy[i]='X';
+        if(checkPotentialWin(copy,'X')) { makeBotPlace(i); return; }
+      }
+      // prefer center
+      if(empty.includes(4)){ makeBotPlace(4); return; }
+      // prefer corners
+      const corners = [0,2,6,8].filter(i=>empty.includes(i));
+      if(corners.length){ makeBotPlace(corners[Math.floor(Math.random()*corners.length)]); return; }
+      // else random
+      makeBotPlace(empty[Math.floor(Math.random()*empty.length)]);
+    }
+
+    function checkPotentialWin(simBoard, mark){
+      return wins.some(line=> line.every(i => simBoard[i]===mark));
+    }
+    function makeBotPlace(idx){
+      placeMark(idx,'O');
+      const winLine = checkWin();
+      if(winLine){ endRound(winLine); return; }
+      if(board.every(Boolean)){ drawRound(); return; }
+      current='X';
+      updateTurnBadge();
+    }
+
+    /* UI bindings */
+    newRoundBtn.addEventListener('click', ()=>{
+      newRound();
+    });
+    resetAllBtn.addEventListener('click', ()=>{
+      resetAll();
+    });
+    startBtn.addEventListener('click', ()=>startGame(false));
+    vsBotBtn.addEventListener('click', ()=>{
+      // enable vsBot and start
+      startGame(true);
+    });
+
+    /* init */
+    buildBoard();
+    turnBadge.textContent = 'Turn: —';
+    statusBar.textContent = 'Enter player names and press Start (or Play vs Bot)';
+
+    /* Visitor counter (localStorage) for game zone (visitCount) */
+    (function visitorCount(){
+      try{
+        let v = Number(localStorage.getItem('visit-count-game')||'0');
+        v = v + 1;
+        localStorage.setItem('visit-count-game', String(v));
+        document.getElementById('visitCount').textContent = `Visitors (this browser): ${v}`;
+      }catch(e){
+        // ignore if localStorage blocked
+      }
+    })();
+
+  </script>
+
+  <script>
+    // small script to maintain overall site visitor-count in footer (doesn't overwrite earlier game count)
+    if (localStorage.pagecount) {
+      localStorage.pagecount = Number(localStorage.pagecount) + 1;
+    } else {
+      localStorage.pagecount = 1;
+    }
+    const vc = document.getElementById("visitor-count");
+    if(vc) vc.innerText = 'Visits: ' + localStorage.pagecount;
+  </script>
+</body>
+
+</html>
